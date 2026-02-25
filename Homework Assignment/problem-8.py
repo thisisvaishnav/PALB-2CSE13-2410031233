@@ -1,17 +1,17 @@
-def find_duplicate(nums):
-    slow = nums[0]
-    fast = nums[0]
-    while True:
-        slow = nums[slow]
-        fast = nums[nums[fast]]
-        if slow == fast:
-            break
-    slow = nums[0]
-    while slow != fast:
-        slow = nums[slow]
-        fast = nums[fast]
-    return slow
+def search_insert(arr, target):
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return low
 
 
-nums = [1, 3, 4, 2, 2]
-print(find_duplicate(nums))
+arr = list(map(int, input("Enter sorted array: ").split()))
+target = int(input("Enter target: "))
+print("Index:", search_insert(arr, target))

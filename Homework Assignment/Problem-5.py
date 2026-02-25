@@ -1,13 +1,10 @@
-def two_sum(nums, target):
-    seen = {}
-    for i in range(len(nums)):
-        diff = target - nums[i]
-        if diff in seen:
-            return [seen[diff], i]
-        seen[nums[i]] = i
-    return []
+def largest_element(arr):
+    largest = arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] > largest:
+            largest = arr[i]
+    return largest
 
 
-nums = [2, 7, 11, 15]
-target = 9
-print(two_sum(nums, target))
+arr = list(map(int, input("Enter array elements: ").split()))
+print("Largest element:", largest_element(arr))

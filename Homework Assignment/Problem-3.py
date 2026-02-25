@@ -1,10 +1,8 @@
-def largest_element(arr):
-    largest = arr[0]
-    for i in range(1, len(arr)):
-        if arr[i] > largest:
-            largest = arr[i]
-    return largest
+def kth_smallest(arr, k):
+    arr.sort()
+    return arr[k - 1]
 
 
-arr = [10, 5, 20, 8, 25, 3]
-print(largest_element(arr))
+arr = list(map(int, input("Enter array elements: ").split()))
+k = int(input("Enter k: "))
+print("Kth smallest element:", kth_smallest(arr, k))

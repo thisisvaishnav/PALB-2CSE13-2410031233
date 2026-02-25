@@ -1,19 +1,11 @@
-def merge_without_extra_space(a, b):
-    n = len(a)
-    m = len(b)
-    i = n - 1
-    j = 0
-    while i >= 0 and j < m:
-        if a[i] > b[j]:
-            a[i], b[j] = b[j], a[i]
-        i -= 1
-        j += 1
-    a.sort()
-    b.sort()
+def two_sum(nums, target):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return []
 
 
-a = [1, 3, 5, 7]
-b = [0, 2, 6, 8, 9]
-merge_without_extra_space(a, b)
-print(a)
-print(b)
+nums = list(map(int, input("Enter array elements: ").split()))
+target = int(input("Enter target: "))
+print("Indices:", two_sum(nums, target))

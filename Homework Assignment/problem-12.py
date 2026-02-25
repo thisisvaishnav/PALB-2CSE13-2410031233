@@ -1,20 +1,16 @@
-def triplet_sum(arr, target):
-    arr.sort()
+def minimize_height(arr, k):
     n = len(arr)
-    for i in range(n - 2):
-        left = i + 1
-        right = n - 1
-        while left < right:
-            total = arr[i] + arr[left] + arr[right]
-            if total == target:
-                return True
-            elif total < target:
-                left += 1
-            else:
-                right -= 1
-    return False
+    arr.sort()
+    result = arr[n - 1] - arr[0]
+    for i in range(1, n):
+        if arr[i] - k < 0:
+            continue
+        high = max(arr[n - 1] - k, arr[i - 1] + k)
+        low = min(arr[0] + k, arr[i] - k)
+        result = min(result, high - low)
+    return result
 
 
-arr = [1, 4, 45, 6, 10, 8]
-target = 22
-print(triplet_sum(arr, target))
+arr = list(map(int, input("Enter tower heights: ").split()))
+k = int(input("Enter k: "))
+print("Minimum difference:", minimize_height(arr, k))

@@ -1,8 +1,12 @@
-def kth_smallest(arr, k):
-    arr.sort()
-    return arr[k - 1]
+def reverse_array(arr):
+    left = 0
+    right = len(arr) - 1
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+    return arr
 
 
-arr = [7, 10, 4, 3, 20, 15]
-k = 3
-print(kth_smallest(arr, k))
+arr = list(map(int, input("Enter array elements: ").split()))
+print("Reversed array:", reverse_array(arr))

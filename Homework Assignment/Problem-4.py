@@ -1,20 +1,15 @@
-def search_insert(arr, target):
-    low = 0
-    high = len(arr) - 1
-    while low <= high:
-        mid = (low + high) // 2
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-    return low
+def union_arrays(a, b):
+    result = []
+    for x in a:
+        if x not in result:
+            result.append(x)
+    for x in b:
+        if x not in result:
+            result.append(x)
+    result.sort()
+    return result
 
 
-arr = [1, 3, 5, 6]
-target = 5
-print(search_insert(arr, target))
-
-target = 2
-print(search_insert(arr, target))
+a = list(map(int, input("Enter first array: ").split()))
+b = list(map(int, input("Enter second array: ").split()))
+print("Union:", union_arrays(a, b))
