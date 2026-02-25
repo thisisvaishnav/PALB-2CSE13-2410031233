@@ -1,20 +1,13 @@
-def trap_water(arr):
-    n = len(arr)
-    if n < 3:
-        return 0
-    left_max = [0] * n
-    right_max = [0] * n
-    left_max[0] = arr[0]
-    for i in range(1, n):
-        left_max[i] = max(left_max[i - 1], arr[i])
-    right_max[n - 1] = arr[n - 1]
-    for i in range(n - 2, -1, -1):
-        right_max[i] = max(right_max[i + 1], arr[i])
-    water = 0
-    for i in range(n):
-        water += min(left_max[i], right_max[i]) - arr[i]
-    return water
+def chocolate_distribution(arr, m):
+    arr.sort()
+    min_diff = arr[m - 1] - arr[0]
+    for i in range(1, len(arr) - m + 1):
+        diff = arr[i + m - 1] - arr[i]
+        if diff < min_diff:
+            min_diff = diff
+    return min_diff
 
 
-arr = list(map(int, input("Enter block heights: ").split()))
-print("Trapped water:", trap_water(arr))
+arr = list(map(int, input("Enter chocolates in packets: ").split()))
+m = int(input("Enter number of students: "))
+print("Minimum difference:", chocolate_distribution(arr, m))
