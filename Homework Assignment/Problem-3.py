@@ -1,24 +1,10 @@
-class Solution:
-    def searchInsert(self, nums, target):
-        low, high = 0, len(nums) - 1
-
-        while low <= high:
-            mid = (low + high) // 2
-
-            if nums[mid] == target:
-                return mid
-            elif nums[mid] < target:
-                low = mid + 1
-            else:
-                high = mid - 1
-
-        return low
+def largest_element(arr):
+    largest = arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] > largest:
+            largest = arr[i]
+    return largest
 
 
-if __name__ == "__main__":
-    sol = Solution()
-
-    print(sol.searchInsert([1, 3, 5, 6], 5))  # 2
-    print(sol.searchInsert([1, 3, 5, 6], 2))  # 1
-    print(sol.searchInsert([1, 3, 5, 6], 7))  # 4
-    print(sol.searchInsert([1, 3, 5, 6], 0))  # 0
+arr = [10, 5, 20, 8, 25, 3]
+print(largest_element(arr))
